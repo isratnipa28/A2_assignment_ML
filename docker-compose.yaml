@@ -1,0 +1,20 @@
+version: '3.1'
+services:
+  dash:
+    command: python3 main.py
+    image: isratnipa/nipa:a2.0
+    platform: linux/x86_64
+
+    build:
+      context: .
+      dockerfile: .Dockerfile
+
+    volumes:
+      - .:/root/
+      - ./.vscode-server/pyhton:/root/.vscode-server
+    environment:
+      - HOST=0.0.0.0
+      - PORT=80
+
+    ports:
+      - 8050:80
